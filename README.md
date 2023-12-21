@@ -29,7 +29,6 @@ Install [Neo4j](https://neo4j.com/download/):
       3. Select `Open Folder`
       4. Select `Import`
       5. This opens the import directory, so now you can copy the directory. 
-- Ensure to allocate enough memory to your database, advised: `dbms.memory.heap.max_size=5G`
 - Install APOC (see https://neo4j.com/labs/apoc/)
   - Install `Neo4j APOC Core library`: 
     1. Select the database in Neo4j desktop 
@@ -56,6 +55,12 @@ Install [Neo4j](https://neo4j.com/download/):
          4. Select `Conf`
     2. Create the file `apoc.conf`
     3. Add the following line to `apoc.conf`: `apoc.import.file.enabled=true`.
+- Ensure to allocate enough memory to your database, advised: `dbms.memory.heap.max_size=10G`
+  1. Select the database in Neo4j desktop
+  2. Click the three dots
+  3. Select `Settings`
+  4. Locate `dbms.memory.heap.max_size=512m`
+  5. Change `512m` to `10G`
 
 ## Data set specific information
 We provide data and scripts for BPI Challenge 2017; store the original data in CSV format in the directory `/data`.
