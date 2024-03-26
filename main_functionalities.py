@@ -8,10 +8,10 @@ from custom_modules.custom_modules.df_interactions import InferDFInteractions
 from custom_modules.custom_modules.discover_dfg import DiscoverDFG
 
 
-def clear_db(db_connection):
+def clear_db(db_connection, config):
     print(Fore.RED + 'Clearing the database.' + Fore.RESET)
-
-    db_manager = DBManagement(db_connection)
+    semantic_header = SemanticHeader.create_semantic_header(config=config)
+    db_manager = DBManagement(db_connection, semantic_header=semantic_header)
     db_manager.clear_db(replace=True)
     db_manager.set_constraints()
 
