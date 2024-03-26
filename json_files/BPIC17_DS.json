@@ -13,7 +13,7 @@
       "ResourceRecord"
     ],
     "add_log": true,
-    "add_event_index": true,
+    "add_index": true,
     "sample": {
       "use_random_sample": false,
       "population_column": "case",

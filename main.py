@@ -27,7 +27,7 @@ def main(config,
     performance = Performance.set_up_performance(config=config)
 
     if step_clear_db:
-        clear_db(db_connection)
+        clear_db(db_connection, config)
 
     if step_populate_graph:
         load_data(db_connection=db_connection,
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     main(config=Configuration.init_conf_with_config_file(),
          step_clear_db=True,
          step_populate_graph=True,
-         step_delete_parallel_df=True,
-         step_discover_model=True,
-         step_build_tasks=True,
-         step_infer_delays=True)
+         step_delete_parallel_df=False,
+         step_discover_model=False,
+         step_build_tasks=False,
+         step_infer_delays=False)
