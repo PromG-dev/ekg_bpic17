@@ -1,63 +1,45 @@
 from datetime import datetime
-from promg import DatabaseConnection
-from promg import Configuration
+from method_manager import MethodManager
 
-from promg import Performance
-from promg.modules.db_management import DBManagement
+step_clear_db = True
+step_populate_graph = True
+step_delete_parallel_df = False
+step_discover_model = False
+step_build_tasks = False
+step_infer_delays = False
 
-from main_functionalities import clear_db, load_data, transform_data, delete_parallel_df, discover_model, build_tasks, \
-    infer_delays, print_statistics
 
-
-def main(config,
-         step_clear_db=True,
-         step_populate_graph=True,
-         step_delete_parallel_df=True,
-         step_discover_model=True,
-         step_build_tasks=True,
-         step_infer_delays=True
-         ) -> None:
+def main() -> None:
     """
     Main function, read all the logs, clear and create the graph, perform checks
     @return: None
     """
     print("Started at =", datetime.now().strftime("%H:%M:%S"))
 
-    db_connection = DatabaseConnection.set_up_connection(config=config)
-    performance = Performance.set_up_performance(config=config)
+    methods = MethodManager()
 
     if step_clear_db:
-        clear_db(db_connection, config)
+        methods.clear_database()
 
     if step_populate_graph:
-        load_data(db_connection=db_connection,
-                  config=config)
-        transform_data(db_connection=db_connection,
-                       config=config)
+        methods.load_and_transform_records()
 
     if step_delete_parallel_df:
-        delete_parallel_df(db_connection=db_connection, config=config)
+        methods.delete_parallel_df()
 
     if step_discover_model:
-        discover_model(db_connection=db_connection, config=config)
+        methods.discover_model()
 
     if step_build_tasks:
-        build_tasks(db_connection=db_connection, config=config)
+        methods.build_tasks()
 
     if step_infer_delays:
-        infer_delays(db_connection=db_connection)
+        methods.infer_delays()
 
-    performance.finish_and_save()
-    print_statistics(db_connection)
-
-    db_connection.close_connection()
+    methods.finish_and_save()
+    methods.print_statistics()
+    methods.close_connection()
 
 
 if __name__ == "__main__":
-    main(config=Configuration.init_conf_with_config_file(),
-         step_clear_db=True,
-         step_populate_graph=True,
-         step_delete_parallel_df=False,
-         step_discover_model=False,
-         step_build_tasks=False,
-         step_infer_delays=False)
+    main()
