@@ -11,7 +11,7 @@ Install [Neo4j](https://neo4j.com/download/):
 
 ### PromG
 PromG should be installed as a Python package using pip
-`pip install promg==2.1.0`.
+`pip install promg==2.2.3`.
 
 The source code for PromG can be found [PromG Core Github repository](https://github.com/PromG-dev/promg-core).
 
@@ -23,7 +23,13 @@ The source code for PromG can be found [PromG Core Github repository](https://gi
 - Create a New Graph Data In Neo4j Desktop
    1. Select `+Add` (Top right corner)
    2. Choose Local DBMS or Remote Connection
-   3. Follow the prompted steps (the default password we assume is 12345678)
+   3. Follow the prompted steps 
+  - the default password we assume is 12345678
+  - version should be v5.9.0
+
+> [!IMPORTANT]  
+> The code only works Neo4j databases up to v5.9.0.
+
 - Install APOC (see https://neo4j.com/labs/apoc/)
   - Install `Neo4j APOC Core library`: 
     1. Select the database in Neo4j desktop 
@@ -51,9 +57,6 @@ The source code for PromG can be found [PromG Core Github repository](https://gi
 - Configuration; `config.yaml`
   - Set the URI in `config.yaml` to the URI of your server. Default value is `bolt://localhost:7687`.
   - Set the password in `config.yaml` to the password of your server. Default value is `12345678`.
-  - Set the import directory in `config.yaml` to the import directory of your Neo4j server. You can determine the import directory as follows:
-    1. Select the Neo4j Server in Neo4j Desktop > Click the three dots > Select `Open Folder` > Select `Import`
-    2. This opens the import directory, so now you can copy the directory. 
 
 ### Store Data
 We provide data and scripts for BPI Challenge 2017; store the original data in CSV format in the directory `/data`.
@@ -65,7 +68,7 @@ The datasets are available from:
             http://doi.org/10.5281/zenodo.3865222
 
 ### Install PromG Library for Script
-The library can be installed in Python using pip: `pip install promg==2.1.0`.
+The library can be installed in Python using pip: `pip install promg==2.2.3`.
 The source code for PromG can be found [PromG Core Github repository](https://github.com/PromG-dev/promg-core).
 
 ---------------------
