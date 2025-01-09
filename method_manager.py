@@ -30,7 +30,7 @@ class MethodManager:
 
         oced_pg = self.modules.get_oced_pg()
         oced_pg.load_and_transform()
-        # oced_pg.create_df_edges()
+        oced_pg.create_df_edges()
 
     def finish_and_save(self):
         performance = self.modules.get_performance()
@@ -39,10 +39,6 @@ class MethodManager:
     def print_statistics(self):
         db_manager = self.modules.get_db_manager()
         db_manager.print_statistics()
-
-    def close_connection(self):
-        db_connection = self.modules.get_db_connection()
-        db_connection.close_connection()
 
     def infer_delays(self):
         print(Fore.RED + 'Computing delay edges.' + Fore.RESET)
